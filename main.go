@@ -40,8 +40,6 @@ func DemoteEveryone(users Users) (jar *http.CookieJar){
 		req.AddCookie(&roblo)
 		getCSRF, _ := csrf.GetCSRF(acc)
 		req.Header.Set("Content-Type", "application/json;charset=utf-8")
-		req.Header.Set("Accept", "application/json, text/plain, */*")
-		req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.2 Safari/605.1.15")
 		req.Header.Set("X-CSRF-TOKEN", getCSRF)
 		client := &http.Client{Timeout: 10 * time.Second, Jar: jar}
 		resp, err := client.Do(req)
